@@ -1,13 +1,14 @@
 using System.Collections.Generic;
-using OdeToFood.Core;
+using OdeToFood.Data;
 using System.Linq;
+using OdeToFood.Core;
 using static OdeToFood.Core.Restaurant;
 
 namespace OdeToFood.Data
 {
     public interface IRestaurantData
     {
-         IEnumerable<Restaurant> GetAll();
+         IEnumerable<Restaurant> GetRestaurantsByname(string name);
     }
 
     public class InMemoryResturantData : IRestaurantData 
@@ -26,9 +27,10 @@ namespace OdeToFood.Data
             };
 
         }
-        public IEnumerable<Restaurant> GetAll() 
+        public IEnumerable<Restaurant> GetRestaurantsByname(string name = null) 
         {
             return from r in restaurants    
+                    where string.IsNullOrEmpty(name) || r.Name.StartsWith(name)
                     orderby r.Name 
                     select r;                  
         }
