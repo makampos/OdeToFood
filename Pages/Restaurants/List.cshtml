@@ -1,4 +1,4 @@
-@page
+@page 
 @model OdeToFood.Pages.Restaurants.ListModel
 @{
     ViewData["Title"] = "List";
@@ -26,6 +26,17 @@
             <td>@restaurant.Name</td>
             <td>@restaurant.Location</td>
             <td>@restaurant.Cuisine</td>
+            @* <td> // Using Query string
+                <a class="btn btn-lg" a href="/Restaurants/Detail?restaurantId=@restaurant.Id">x
+                    <i class="glyphicon glyphicon-zoom-in"></i>
+                </a>
+            </td> *@
+
+            <td>
+                <a class="btn btn-lg" 
+                    asp-page="./Detail" asp-route-restaurantId="@restaurant.Id"> x                  
+                </a>
+            </td>
         </tr>
     }
 </table>

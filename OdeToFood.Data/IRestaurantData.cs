@@ -8,9 +8,10 @@ namespace OdeToFood.Data
 {
     public interface IRestaurantData
     {
-         IEnumerable<Restaurant> GetRestaurantsByname(string name);
+         IEnumerable<Restaurant> GetRestaurantsByname(string name);        
+         Restaurant GetById(int restaurantId);
     }
-
+  
     public class InMemoryResturantData : IRestaurantData 
     {
          readonly List<Restaurant> restaurants;
@@ -26,6 +27,11 @@ namespace OdeToFood.Data
                 new Restaurant { Id = 6, Name = "IhalaIhala", Location = "Paris", Cuisine = CuisineType.None },
             };
 
+        }
+
+        public Restaurant GetById(int id) 
+        {
+            return restaurants.SingleOrDefault(r => r.Id == id);
         }
         public IEnumerable<Restaurant> GetRestaurantsByname(string name = null) 
         {
