@@ -33,8 +33,11 @@
             </td> *@
 
             <td>
-                <a class="btn btn-lg" 
-                    asp-page="./Detail" asp-route-restaurantId="@restaurant.Id"> x                  
+                <a class="btn btn-info btn-md" 
+                    asp-page="./Detail" asp-route-restaurantId="@restaurant.Id">Details                 
+                </a>
+                <a class="btn btn-dark btn-md" 
+                    asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">Edit                 
                 </a>
             </td>
         </tr>
